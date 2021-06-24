@@ -31,5 +31,11 @@ ggplot(heart_data, aes(x = age, fill = factor(output))) +
   xlab("Age") +
   ylab("Total count") +
   labs("Chances of a heart attack")
-  
+
+# does cholestrol have an effect on maximum heart rate?
+higher_heartrate <- heart_data[which(heart_data$thalachh > mean(heart_data$thalachh)),]
+lower_heartrate <- heart_data[which(heart_data$thalachh < mean(heart_data$thalachh)), ]
+mean(higher_heartrate$chol)
+mean(lower_heartrate$chol)
+
   
