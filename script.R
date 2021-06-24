@@ -12,6 +12,10 @@ female <- subset(heart_data, sex == 0)
 mean(male$thalachh, na.rm = TRUE)
 mean(female$thalachh, na.rm = TRUE)
 
+# what about chances on having a heart attack?
+length(male$output)
+length(female$output)
+
 # does gender have an effect on the likelyness of a heart attack
 mean(male$output, na.rm = TRUE)
 mean(female$output, na.rm = TRUE)
