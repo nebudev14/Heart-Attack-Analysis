@@ -73,3 +73,8 @@ three_vessel <- heart_data[which(heart_data$caa == 3), ]
 table(one_vessel$output)
 table(two_vessel$output)
 table(three_vessel$output)
+
+# does age have any relation to cholestrol levels?
+ggplot(heart_data, aes(x = age, y = chol)) + 
+  geom_col(width = 0.9) 
+
