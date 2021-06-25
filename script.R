@@ -3,7 +3,8 @@ library(ggplot2)
 
 heart_data <- read.csv("heart.csv", header = TRUE) # load data
 str(heart_data)
-
+summary(heart_data)
+cor(heart_data)
 
 # does gender have an effect on heart rate?
 male <- subset(heart_data, sex == 1)
@@ -43,4 +44,13 @@ lower_heartrate <- heart_data[which(heart_data$thalachh < mean(heart_data$thalac
 mean(higher_heartrate$chol)
 mean(lower_heartrate$chol)
 
-  
+# relationship between blood sugar and max heart rate?
+higher_bs <- heart_data[which(heart_data$fbs == 1), ]
+lower_bs <- heart_data[which(heart_data$fbs == 0), ] 
+
+mean(higher_bs$thalachh) # no relationship
+mean(lower_bs$thalachh)
+
+# what about chances of a heart attack?
+length(which(higher_bs$output == 1))
+length(which(lower_bs$output == 0))
