@@ -54,3 +54,22 @@ mean(lower_bs$thalachh)
 # what about chances of a heart attack?
 length(which(higher_bs$output == 1))
 length(which(lower_bs$output == 0))
+
+
+# how does rest_ecg affect chances of heart attack? 
+ggplot(heart_data, aes(x = age, fill = factor(output))) + 
+  geom_bar(width = 1) + 
+  facet_wrap(~restecg) + 
+  ggtitle("Resting electrocardiographic results") + 
+  xlab("Age") +
+  ylab("Total count") +
+  labs("Chances of a heart attack")
+
+# does the number of major vessels increase the chances of a heart attack?
+one_vessel <- heart_data[which(heart_data$caa == 1), ]
+two_vessel <- heart_data[which(heart_data$caa == 2), ]
+three_vessel <- heart_data[which(heart_data$caa == 3), ]
+
+table(one_vessel$output)
+table(two_vessel$output)
+table(three_vessel$output)
