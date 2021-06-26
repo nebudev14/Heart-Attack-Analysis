@@ -1,0 +1,19 @@
+---
+title: "Heart-Attack-Analysis"
+author: "Warren Yun"
+date: "June 26, 2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+rm(list=ls()) 
+library(ggplot2)
+heart_data <- read.csv("heart.csv", header = TRUE)
+```
+
+This data is from Kaggle:
+https://www.kaggle.com/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
+```{r cars}
+summary(heart_data)
+```
+

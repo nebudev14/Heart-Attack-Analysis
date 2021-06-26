@@ -71,9 +71,7 @@ table(two_vessel$output)
 table(three_vessel$output)
 
 # does age have any relation to cholestrol levels?
-ggplot(heart_data, aes(x = age, y = chol)) + 
-  geom_col(width = 0.9) 
-
+ggplot(heart_data, aes(age, chol)) + geom_col()
 # does old age affect whether the patient has exercise induced agina?
 mean(subset(heart_data, exng == 1)$age)# has exng
 mean(subset(heart_data, exng == 0)$age) # doesnt have exng
