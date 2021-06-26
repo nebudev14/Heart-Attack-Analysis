@@ -18,10 +18,6 @@ length(which(male$output == 1))
 length(which(female$output == 1))
 
 
-# does gender have an effect on the likelyness of a heart attack
-mean(male$output, na.rm = TRUE)
-mean(female$output, na.rm = TRUE)
-
 # does age play a role in the chance of a heart attack?
 more_likely <- subset(heart_data, output == 1)
 less_likely <- subset(heart_data, output == 0)
@@ -78,3 +74,10 @@ table(three_vessel$output)
 ggplot(heart_data, aes(x = age, y = chol)) + 
   geom_col(width = 0.9) 
 
+# does old age affect whether the patient has exercise induced agina?
+mean(subset(heart_data, exng == 1)$age)# has exng
+mean(subset(heart_data, exng == 0)$age) # doesnt have exng
+
+# relationship between blood pressure and chances of heart attack
+summary(subset(heart_data, output == 1)$trtbps)
+summary(subset(heart_data, output == 0)$trtbps)
