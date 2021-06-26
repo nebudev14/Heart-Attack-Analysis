@@ -13,7 +13,25 @@ heart_data <- read.csv("heart.csv", header = TRUE)
 
 This data is from Kaggle:
 https://www.kaggle.com/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
-```{r cars}
+```{r}
 summary(heart_data)
+```
+
+Does gender have an effect on heart rate?
+```{r}
+male <- subset(heart_data, sex == 1)
+female <- subset(heart_data, sex == 0)
+```
+
+```{r}
+mean(male$thalachh, na.rm = TRUE)
+mean(female$thalachh, na.rm = TRUE)
+
+```
+
+What about chances on a heart attack?
+```{r}
+length(which(male$output == 1))
+length(which(female$output == 1))
 ```
 
