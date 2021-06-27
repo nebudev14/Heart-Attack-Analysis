@@ -106,6 +106,7 @@ mean(lower_bs$thalachh)
 ```
 
 What about the relationship between blood sugar and chances of a heart attack?
+
 ```{r}
 length(which(higher_bs$output == 1))
 length(which(lower_bs$output == 0))
@@ -117,6 +118,7 @@ Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or 
 Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria \
 \
 Having ST-T wave abnormality seems to increase a patient's chances of a heart attack.
+
 ```{r echo = FALSE}
 ggplot(heart_data, aes(x = age, fill = factor(output))) + 
   geom_bar(width = 1) + 
@@ -125,5 +127,14 @@ ggplot(heart_data, aes(x = age, fill = factor(output))) +
   xlab("Age") +
   ylab("Total count") +
   labs("Chances of a heart attack")
+```
 
+Does the number of major vessels a patient has have any effect on the chances of a heart attack? \
+0 = Lower chance of heart attack
+1 = Higher chance of heart attack
+
+```{r}
+table(heart_data[which(heart_data$caa == 1), ]$output) # one major vessel
+table(heart_data[which(heart_data$caa == 2), ]$output) # two major vessels
+table(heart_data[which(heart_data$caa == 3), ]$output) # three major vessels
 ```
