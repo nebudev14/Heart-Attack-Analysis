@@ -13,11 +13,13 @@ heart_data <- read.csv("heart.csv", header = TRUE)
 
 This data is from Kaggle:
 https://www.kaggle.com/rashikrahmanpritom/heart-attack-analysis-prediction-dataset
+
 ```{r}
 summary(heart_data)
 ```
 
 Does gender have an effect on heart rate?
+
 ```{r}
 male <- subset(heart_data, sex == 1)
 female <- subset(heart_data, sex == 0)
@@ -30,18 +32,21 @@ mean(female$thalachh, na.rm = TRUE)
 ```
 
 What about chances on a heart attack?
+
 ```{r}
 length(which(male$output == 1))
 length(which(female$output == 1))
 ```
 
 Does age have an affect on the chance of a heart attack?
+
 ```{r}
 more_likely <- subset(heart_data, output == 1)
 less_likely <- subset(heart_data, output == 0)
 ```
 
 Find the average age for both subsets
+
 ```{r}
 mean(more_likely$age, na.rm = TRUE)
 mean(less_likely$age, na.rm = TRUE)
@@ -55,6 +60,9 @@ Value 3: asymptomatic \
 \
 Blue = More likely to have a heart attack \
 Red = Less likely to have a heart attack \
+\
+Looks like atypical agina and non-aginal pain are the types of chest pain that can raise a person's chances of a heart attack 
+
 ```{r echo=FALSE}
 ggplot(heart_data, aes(x = age, fill = factor(output))) + 
   geom_bar(width = 0.8) + 
@@ -63,4 +71,20 @@ ggplot(heart_data, aes(x = age, fill = factor(output))) +
   xlab("Age") +
   ylab("Total count") +
   labs("Chances of a heart attack")
+```
+
+Is there any relationship between blood sugar and maximum heart rate? \
+\
+Create two subsets, one where the patient's fasting blood sugar is > 120 mg/dl (1), and another where the patient's fasting blood sugar is < 120 mg/dl (0).
+
+```{r}
+higher_bs <- heart_data[which(heart_data$fbs == 1), ]
+lower_bs <- heart_data[which(heart_data$fbs == 0), ] 
+```
+
+Doesn't seem to have any relationship
+
+```{r}
+mean(higher_bs$thalachh)
+mean(lower_bs$thalachh)
 ```
