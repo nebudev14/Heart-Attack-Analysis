@@ -35,3 +35,14 @@ length(which(male$output == 1))
 length(which(female$output == 1))
 ```
 
+Does age have an affect on the chance of a heart attack?
+```{r}
+more_likely <- subset(heart_data, output == 1)
+less_likely <- subset(heart_data, output == 0)
+```
+
+Find the average age for both subsets
+```{r}
+mean(more_likely$age, na.rm = TRUE)
+mean(less_likely$age, na.rm = TRUE)
+```
