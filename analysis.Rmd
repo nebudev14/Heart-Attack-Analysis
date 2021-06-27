@@ -104,3 +104,26 @@ Doesn't seem to have any relationship
 mean(higher_bs$thalachh)
 mean(lower_bs$thalachh)
 ```
+
+What about the relationship between blood sugar and chances of a heart attack?
+```{r}
+length(which(higher_bs$output == 1))
+length(which(lower_bs$output == 0))
+```
+
+Do resting electrocardiographic results (rest_ecg) have an effect on the chance of a heart attack? \
+Value 0: normal \
+Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV) \
+Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria \
+\
+Having ST-T wave abnormality seems to increase a patient's chances of a heart attack.
+```{r echo = FALSE}
+ggplot(heart_data, aes(x = age, fill = factor(output))) + 
+  geom_bar(width = 1) + 
+  facet_wrap(~restecg) + 
+  ggtitle("Resting electrocardiographic results") + 
+  xlab("Age") +
+  ylab("Total count") +
+  labs("Chances of a heart attack")
+
+```
