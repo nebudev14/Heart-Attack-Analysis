@@ -62,13 +62,10 @@ ggplot(heart_data, aes(x = age, fill = factor(output))) +
   labs("Chances of a heart attack")
 
 # does the number of major vessels increase the chances of a heart attack?
-one_vessel <- heart_data[which(heart_data$caa == 1), ]
-two_vessel <- heart_data[which(heart_data$caa == 2), ]
-three_vessel <- heart_data[which(heart_data$caa == 3), ]
 
-table(one_vessel$output)
-table(two_vessel$output)
-table(three_vessel$output)
+table(heart_data[which(heart_data$caa == 1), ]$output)
+table(heart_data[which(heart_data$caa == 2), ]$output)
+table(heart_data[which(heart_data$caa == 3), ]$output)
 
 # does age have any relation to cholestrol levels?
 ggplot(heart_data, aes(age, chol)) + geom_col()
