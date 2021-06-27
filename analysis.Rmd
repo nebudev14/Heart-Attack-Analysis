@@ -73,6 +73,22 @@ ggplot(heart_data, aes(x = age, fill = factor(output))) +
   labs("Chances of a heart attack")
 ```
 
+Does cholesterol have an effect on the maximum heart rate a person has reached? \
+\
+Create two subsets, one where all the patients have reached a max heart rate greater than the average max heart rate, and another where all the patients have reached a max heart rate less than the average max heart rate.
+
+```{r}
+higher_heartrate <- heart_data[which(heart_data$thalachh > mean(heart_data$thalachh)),]
+lower_heartrate <- heart_data[which(heart_data$thalachh < mean(heart_data$thalachh)), ]
+```
+
+Find the average cholesterol level in both subsets
+
+```{r}
+mean(higher_heartrate$chol)
+mean(lower_heartrate$chol)
+```
+
 Is there any relationship between blood sugar and maximum heart rate? \
 \
 Create two subsets, one where the patient's fasting blood sugar is > 120 mg/dl (1), and another where the patient's fasting blood sugar is < 120 mg/dl (0).
