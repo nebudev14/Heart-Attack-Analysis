@@ -138,3 +138,16 @@ table(heart_data[which(heart_data$caa == 1), ]$output) # one major vessel
 table(heart_data[which(heart_data$caa == 2), ]$output) # two major vessels
 table(heart_data[which(heart_data$caa == 3), ]$output) # three major vessels
 ```
+
+Does age have any relation to cholesterol levels in a patient?
+
+```{r echo = FALSE}
+ggplot(heart_data, aes(age, chol)) + geom_col()
+```
+
+Does age affect whether the patient has exercise induced agina?
+
+```{r}
+mean(subset(heart_data, exng == 1)$age)# has exng
+mean(subset(heart_data, exng == 0)$age) # doesnt have exng
+```
