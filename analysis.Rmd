@@ -46,3 +46,21 @@ Find the average age for both subsets
 mean(more_likely$age, na.rm = TRUE)
 mean(less_likely$age, na.rm = TRUE)
 ```
+
+Which chest pains have the greatest effect on the chances of a heart attack? \
+Value 0: typical angina \
+Value 1: atypical angina \
+Value 2: non-anginal pain \
+Value 3: asymptomatic \
+\
+Blue = More likely to have a heart attack \
+Red = Less likely to have a heart attack \
+```{r echo=FALSE}
+ggplot(heart_data, aes(x = age, fill = factor(output))) + 
+  geom_bar(width = 0.8) + 
+  facet_wrap(~cp) + 
+  ggtitle("Chest pain type") + 
+  xlab("Age") +
+  ylab("Total count") +
+  labs("Chances of a heart attack")
+```
